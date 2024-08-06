@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const reviewsSchema = mongoose.Schema(
+const ReviewSchema = mongoose.Schema(
   {
     listingId: {
       type: mongoose.SchemaTypes.ObjectId,
@@ -17,4 +17,4 @@ const reviewsSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-export const reviewsmodel = mongoose.model("Reviews", reviewsSchema);
+export const ReviewModel = mongoose.model("Review", ReviewSchema);
