@@ -1,16 +1,14 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const locationSchema = mongoose.Schema(
   {
-    name: String,
-    country: String,
-    latitude: mongoose.Types.Decimal128,
-    longitude: mongoose.Types.Decimal128,
-    listingCount: Number,
+    name: { type: String, require: true, unique: true },
+    country: { type: String, require: true },
+    latitude: { type: mongoose.Types.Decimal128, require: true },
+    longitude: { type: mongoose.Types.Decimal128, require: true },
+    listingCount: { type: Number, require: true },
   },
   { timestamps: true }
 );
 
-const locationModel = mongoose.model("Location", locationSchema);
-
-module.exports = locationModel;
+export const locationModel = mongoose.model("Location", locationSchema);

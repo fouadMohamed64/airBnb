@@ -1,17 +1,20 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const reviewsSchema = mongoose.Schema(
   {
-    listingId: mongoose.SchemaTypes.ObjectId,
-    userId: mongoose.SchemaTypes.ObjectId,
+    listingId: {
+      type: mongoose.SchemaTypes.ObjectId,
+      require: true,
+      ref: "Listing",
+    },
+    userId: { type: mongoose.SchemaTypes.ObjectId, require: true, ref: "User" },
     rating: {
+      type: Number,
       enum: [1, 2, 3, 4, 5],
     },
-    comment: String,
+    comment: { type: String, trim: true },
   },
   { timestamps: true }
 );
 
-const reviewsmodel = mongoose.model("Reviews", reviewsSchema);
-
-module.exports = reviewsmodel;
+export const reviewsmodel = mongoose.model("Reviews", reviewsSchema);
