@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const locationSchema = mongoose.Schema(
+const LocationSchema = mongoose.Schema(
   {
     name: { type: String, require: true, unique: true },
     country: { type: String, require: true },
@@ -11,4 +11,4 @@ const locationSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-export const locationModel = mongoose.model("Location", locationSchema);
+export const LocationModel = mongoose.model("Location", LocationSchema);
