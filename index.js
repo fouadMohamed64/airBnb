@@ -2,13 +2,8 @@ import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
 
-<<<<<<< HEAD
 import listingRoutes from './routes/listing.route.js';
 
-=======
-import {listingRoutes} from './routes/listings.router.js';
-import { bookingsRoutes } from './routes/bookings.router.js';
->>>>>>> cc5cbab0a4c02dccee39debd638de70fdeee95d6
 // Load environment variables
 dotenv.config();
 
@@ -24,12 +19,7 @@ app.use(express.json());
 
 
 // Routes
-<<<<<<< HEAD
 app.use('/listing', listingRoutes);
-=======
-app.use('/listings', listingRoutes);
-app.use('/bookings', bookingsRoutes);
->>>>>>> cc5cbab0a4c02dccee39debd638de70fdeee95d6
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -40,5 +30,5 @@ app.use((err, req, res, next) => {
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
-            console.log(`Server is running on http://localhost:${port}`);
+            console.log(Server is running on http://localhost:${port});
 });
