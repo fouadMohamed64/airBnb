@@ -1,4 +1,4 @@
-import moongose from "mongoose";
+import mongoose from "mongoose";
 
 const amenitiesSchema = mongoose.Schema({
     name: {

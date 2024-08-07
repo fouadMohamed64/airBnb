@@ -1,6 +1,6 @@
-import moongose from "mongoose";
+import mongoose from "mongoose";
 
-const listingsSchema = moongose.Schema({
+const listingsSchema = mongoose.Schema({
     title: {
         type: String,
         trim: true,
@@ -54,4 +54,4 @@ const listingsSchema = moongose.Schema({
     timestamps: true
 });
 
-export const listingsModel = moongose.model('Listings', listingsSchema)
+export const listingsModel = mongoose.model('Listings', listingsSchema)
