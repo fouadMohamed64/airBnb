@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
 
-import listingRoutes from './routes/listings.js';
+import listingRoutes from './routes/listing.route.js';
 
 // Load environment variables
 dotenv.config();
@@ -19,7 +19,7 @@ app.use(express.json());
 
 
 // Routes
-app.use('/listings', listingRoutes);
+app.use('/listing', listingRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -27,6 +27,7 @@ app.use((err, req, res, next) => {
                         message: err.message || 'Internal Server Error',
             });
 });
+
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
             console.log(`Server is running on http://localhost:${port}`);
