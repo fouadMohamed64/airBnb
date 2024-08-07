@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
 
-import listingRoutes from './routes/listings.js';
+import {listingRoutes} from './routes/listings.router.js';
 
 // Load environment variables
 dotenv.config();
