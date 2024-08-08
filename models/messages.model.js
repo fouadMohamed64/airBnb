@@ -1,20 +1,20 @@
 import mongoose from "mongoose";
 
-const massageSchema = new mongoose.Schema(
+const massageSchema = mongoose.Schema(
   {
     listingId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "listings",
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: "Listing",
       required: true,
     },
     senderId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "users",
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: "User",
       required: true,
     },
     receiverId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "users",
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: "User",
       required: true,
     },
     messageContent: {
@@ -27,6 +27,4 @@ const massageSchema = new mongoose.Schema(
   }
 );
 
-const Message = mongoose.model("Message", massageSchema);
-
-export default Message;
+export const MessageModel = mongoose.model("Message", massageSchema);
