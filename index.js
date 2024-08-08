@@ -3,6 +3,7 @@ import express from "express";
 import mongoose from "mongoose";
 
 import listingRoutes from "./routes/listing.route.js";
+import userRoutes from './routes/users.route.js'
 
 // Load environment variables
 dotenv.config();
@@ -21,6 +22,7 @@ app.use(express.json());
 
 // Routes
 app.use("/listing", listingRoutes);
+app.use('/user' , userRoutes)
 
 // Error handling middleware
 app.use((err, req, res, next) => {
