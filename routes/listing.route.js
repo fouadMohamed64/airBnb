@@ -4,27 +4,30 @@ import {
   deleteListing,
   getListingById,
   getListings,
-  updateListing,
+  updateListing
 } from "../controllers/listing.controller.js";
 import {
-  getReviewsByListingId,
   addReviewsByListingId,
+  getReviewsByListingId,
 } from "../controllers/reviews.controller.js";
 
+import { addMessagesByListingId, getMessagesByListingId } from "../controllers/messages.controller.js";
 import { handleAsyncError } from '../utils/handleAsyncError.js';
+
+import { authentication } from '../middleware/Authentication.js';
+import { authorization } from '../middleware/Authorization.js';
 
 let router = express.Router();
 
-router
-  .route("/")
+router.route("/")
   .get(handleAsyncError(getListings)) // get all listings
-  .post(handleAsyncError(createListing)); // post a new listing
+  .post(authentication,authorization('admin'),handleAsyncError(createListing)); // post a new listing
 
-router
-  .route("/:listingId")
+router.route("/:listingId")
   .get(handleAsyncError(getListingById)) // get a listing by id
-  .put(handleAsyncError(updateListing)) // update a listing by id
+  .put(authentication,authorization('admin'),handleAsyncError(updateListing)) // update a listing by id
   .delete(handleAsyncError(deleteListing)); // delete a listing by id
+
 
 router
   .route("/:listingId/reviews")
@@ -36,5 +39,4 @@ router
   .get(getMessagesByListingId)
   .post(addMessagesByListingId);
 
-            
 export default router;

@@ -42,9 +42,17 @@ const listingsSchema = mongoose.Schema({
         type: Number,
         trim: true
     },
+    guests: {
+        type: Number,
+        required: true
+},
     amenities: {
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'amenities'
+    },
+    reviews: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Review'
     },
     price: {
         type: Number,

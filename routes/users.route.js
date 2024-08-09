@@ -1,14 +1,14 @@
-import express from 'express' ;
-import { authentication } from '../middelware/authentication.js';
-import { authorization } from '../middelware/Authorization.js';
+import express from 'express';
+import { getProfile, login, register, updateProfile } from '../controllers/users.controller.js';
+import { authentication } from '../middleware/Authentication.js';
+import { authorization } from '../middleware/Authorization.js';
+import { handleAsyncError } from '../utils/handleAsyncError.js';
 const router = express.Router();
-import { register , login , getProfile , updateProfile} from '../controllers/users.controller.js'
+router.post("/register" ,handleAsyncError(register) );
+router.post("/login", handleAsyncError(login));
 
-router.post("/register" , register);
-router.post("/login", login);
-
-router.get('/profile',authentication ,getProfile )
-router.patch('/profile',authentication,authorization('admin') ,updateProfile)
+router.get('/profile',authentication ,handleAsyncError(getProfile ))
+router.patch('/profile',authentication,authorization('admin') ,handleAsyncError(updateProfile))
 
 
 export default router;

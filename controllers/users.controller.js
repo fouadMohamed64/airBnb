@@ -1,12 +1,8 @@
-import userModel from "../models/users.model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
-import userModel from '../models/users.model.js';
+import userModel from "../models/users.model.js";
 
 export const register = async (req, res) => {
-  try {
     let user = await userModel.findOne({ email: req.body.email });
 
     if (user) {
@@ -22,13 +18,9 @@ export const register = async (req, res) => {
 
     await newUser.save();
     res.status(201).json({ newUser, message: "user registered" });
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
 };
 
 export const login = async (req, res) => {
-  try {
     const user = await userModel.findOne({ email: req.body.email });
     if (!user) {
       return res.status(401).json({ error: "Email or password is incorrect" });
@@ -56,15 +48,11 @@ export const login = async (req, res) => {
 
     user.refreshToken = refreshToken;
     await user.save();
-
+    
     res.status(200).json({ token, refreshToken });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
 };
 
 export const getProfile = async (req, res) => {
-  try {
     const user = await userModel
       .findOne({ email: req.body.email })
       .select("-password");
@@ -72,13 +60,9 @@ export const getProfile = async (req, res) => {
       return res.status(404).json({ error: "User not found" });
     }
     res.status(200).json(user);
-  } catch (err) {
-    res.status(500).json({ error: "Internal Server Error" });
-  }
 };
 
 export const updateProfile = async (req, res) => {
-  try {
     const updates = req.body;
     const user = await userModel
       .findOneAndUpdate({ email: req.user.email }, updates, {
@@ -90,7 +74,5 @@ export const updateProfile = async (req, res) => {
       return res.status(404).json({ error: "User not found" });
     }
     res.status(200).json({ message: "Profile updated", user });
-  } catch (err) {
-    return res.status(400).json({ error: err.message });
-  }
+
 };

@@ -28,9 +28,9 @@ app.use(express.json());
 app.use(errorHandler);
 
 // Routes
-app.use('/', searchRoutes)
 app.use("/listing", listingRoutes);
 app.use('/user', userRoutes)
+app.use('/search', searchRoutes)
 
 
 const port = process.env.PORT || 4000;
