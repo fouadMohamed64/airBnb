@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const BookingSchema = new mongoose.Schema({
             listingId: {
                         type: mongoose.Schema.Types.ObjectId,
-                        ref: 'Listing',
+                        ref: 'Listings',
                         required: true
             },
             guestId: {
