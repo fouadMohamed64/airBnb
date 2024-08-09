@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import listingRoutes from "./routes/listing.route.js";
 import userRoutes from './routes/users.route.js';
 import searchRoutes from './routes/search.router.js';
+import bookingsRoutes from './routes/bookings.router.js';
 
 import errorHandler from "./utils/errorHandler.js";
 
@@ -31,6 +32,7 @@ app.use(errorHandler);
 app.use("/listing", listingRoutes);
 app.use('/user', userRoutes)
 app.use('/search', searchRoutes)
+app.use('/booking', bookingsRoutes)
 
 
 const port = process.env.PORT || 4000;

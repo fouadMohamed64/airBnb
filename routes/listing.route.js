@@ -16,6 +16,16 @@ import { handleAsyncError } from '../utils/handleAsyncError.js';
 
 import { authentication } from '../middleware/Authentication.js';
 import { authorization } from '../middleware/Authorization.js';
+import {
+  getMessagesByListingId,
+  addMessagesByListingId,
+} from "../controllers/messages.controller.js";
+
+import { payment
+ } from "../controllers/payment.controller.js";
+
+
+import { handleAsyncError } from "../utils/errorHandler.js";
 
 let router = express.Router();
 
@@ -38,5 +48,7 @@ router
   .route("/:listingId/messages")
   .get(getMessagesByListingId)
   .post(addMessagesByListingId);
+
+  router.post('/:listingId/payment',authentication,authorization("guest"),payment);
 
 export default router;
