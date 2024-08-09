@@ -5,7 +5,7 @@ import { search } from '../controllers/listing.controller.js';
 
 let router = express.Router();
 
-router.get('/',handleAsyncError(search))// handle advanced search results
+router.get('/',handleAsyncError(search))
 
 
 export default router;
