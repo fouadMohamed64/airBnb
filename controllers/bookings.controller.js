@@ -1,4 +1,5 @@
 import Booking from "../models/booking.model.js";
+import { listingsModel } from "../models/listings.model.js";
 
 export const createBooking = async (req, res) => {
     const newBooking = await Booking.create(req.body)
