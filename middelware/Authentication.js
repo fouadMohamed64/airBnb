@@ -4,7 +4,7 @@ import {promisify} from "util";
 export const authentication =async (req,res,next)=>{
     const {authentication} = req.headers
     if(!authentication){
-        return res.status(400).json("token not vaild")
+        return res.status(403).json("token not vaild")
     }
     try {
         const decoded = await promisify(jwt.verify)(authentication,process.env.SECRET);
