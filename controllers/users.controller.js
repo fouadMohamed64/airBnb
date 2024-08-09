@@ -41,13 +41,13 @@ export const login = async (req, res) => {
 
     const token = jwt.sign(
       { email: user.email, firstName: user.firstName, role: user.role },
-      process.env.SECRET,
+      `${process.env.SECRET}`,
       { expiresIn: "2d" }
     );
 
     const refreshToken = jwt.sign(
       { email: user.email, username: user.firstName, role: user.role },
-      process.env.REFRESH,
+      `${process.env.REFRESH}`,
       { expiresIn: "7d" }
     );
 
