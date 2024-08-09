@@ -4,6 +4,9 @@ import mongoose from "mongoose";
 
 import listingRoutes from "./routes/listing.route.js";
 import userRoutes from './routes/users.route.js';
+import searchRoutes from './routes/search.router.js';
+
+import errorHandler from "./utils/errorHandler.js";
 
 // Load environment variables
 dotenv.config();
@@ -20,18 +23,17 @@ mongoose
   .catch((err) => console.log("Failed to connect to DB:", err));
 app.use(express.json());
 
-// Routes
-app.use("/listing", listingRoutes);
-app.use('/user' , userRoutes)
-
 // Error handling middleware
-app.use((err, req, res, next) => {
-  res.status(err.status || 500).json({
-    message: err.message || "Internal Server Error",
-  });
-});
+app.use(express.json());
+app.use(errorHandler);
+
+// Routes
+app.use('/', searchRoutes)
+app.use("/listing", listingRoutes);
+app.use('/user', userRoutes)
+
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
-            console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Server is running on http://localhost:${port}`);
 });

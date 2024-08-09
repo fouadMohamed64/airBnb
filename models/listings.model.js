@@ -1,5 +1,16 @@
 import mongoose from "mongoose";
 
+const availableDateSchema = new mongoose.Schema({
+    start_date: {
+        type: Date,
+        required: true
+    },
+    end_date: {
+        type: Date,
+        required: true
+    }
+}, { _id: false });
+
 const listingsSchema = mongoose.Schema({
     title: {
         type: String,
@@ -42,14 +53,15 @@ const listingsSchema = mongoose.Schema({
     imagesURL: [String],
     hostId: {
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'user',
+        ref: 'User',
         required: true
     },
     locationId: {
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'Location',
         required: true
-    }
+    },
+    available_dates: [availableDateSchema]
 }, {
     timestamps: true
 });

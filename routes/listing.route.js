@@ -11,11 +11,7 @@ import {
   addReviewsByListingId,
 } from "../controllers/reviews.controller.js";
 
-import {
-  getMessagesByListingId,
-  addMessagesByListingId,
-} from "../controllers/messages.controller.js";
-import { handleAsyncError } from "../utils/errorHandler.js";
+import { handleAsyncError } from '../utils/handleAsyncError.js';
 
 let router = express.Router();
 
@@ -40,4 +36,5 @@ router
   .get(getMessagesByListingId)
   .post(addMessagesByListingId);
 
+            
 export default router;
