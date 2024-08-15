@@ -1,6 +1,6 @@
 import express from 'express'
 import { createBooking, deleteBooking, updateBooking, getBookingById, getAllBookings, getBookingsForGuestId } from '../controllers/bookings.controller.js'
-import { handleAsyncError } from '../utils/errorHandler.js'
+import { handleAsyncError } from '../utils/handleAsyncError.js'
 import Authorize from '../Auth/authorization.js'
 import Authenticate from '../Auth/authentication.js'
 const Router = express.Router()
